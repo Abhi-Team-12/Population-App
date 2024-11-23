@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Population with API</title>
+    <style>
+        body {
+            height: 70vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(120, 198, 198);
+        }
+        
+        .container {
+            width: 300px;
+            background-color: #fff;
+            padding: 50px;
+            text-align: center;
+            border-radius: 20px;
+        }
+        
+        h1 {
+            font-size: 35px;
+        }
+        
+        input {
+            height: 40px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        
+        button {
+            height: 45px;
+            background-color: rgb(94, 94, 251);
+            border-radius: 10px;
+            color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Population App</h1>
+        <div class="inner">
+            <input type="text" name="" placeholder="Check Population City" id="city">
+            <button onclick="getWeather()">Search</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script src="Population_API.js"></script>
+</body>
+
+</html>
