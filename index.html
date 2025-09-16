@@ -1,58 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScSKXMilQUNFuOkQrsQeN3pBHLjaiYx9lj3A&s">
-    <title>Check Population</title>
-    <style>
-        body {
-            height: 70vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(120, 198, 198);
-        }
-        
-        .container {
-            width: 300px;
-            background-color: #fff;
-            padding: 50px;
-            text-align: center;
-            border-radius: 20px;
-        }
-        
-        h1 {
-            font-size: 35px;
-        }
-        
-        input {
-            height: 40px;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-        
-        button {
-            height: 45px;
-            background-color: rgb(94, 94, 251);
-            border-radius: 10px;
-            color: wheat;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Population</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', Arial, sans-serif;
+      transition: background 0.3s;
+    }
+
+    .container {
+      width: 350px;
+      background: rgba(255,255,255,0.15);
+      padding: 48px 36px 40px 36px;
+      border-radius: 28px;
+      box-shadow: 0 6px 24px 0 rgba(44, 62, 80, 0.09), 0 1.5px 5px 1.5px rgba(120,198,198,0.06);
+      backdrop-filter: blur(18px);
+      text-align: center;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      position: relative;
+    }
+
+    .container h1 {
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 1px;
+      color: #273c75;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .container .icon {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 36px;
+      margin-right: 8px;
+      color: #36b3af;
+      filter: drop-shadow(0 2px 8px #8eeca7);
+      animation: popin 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes popin {
+      0% { transform: scale(0.7) rotate(-20deg); opacity: 0;}
+      80% { transform: scale(1.1) rotate(7deg);}
+      100% { transform: scale(1) rotate(0); opacity: 1;}
+    }
+
+    .inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      justify-content: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: none;
+      font-size: 17px;
+      box-shadow: 0 1.5px 5px 0 rgba(52, 152, 219, 0.08);
+      background: rgba(255,255,255,0.65);
+      color: #222f3e;
+      transition: box-shadow 0.2s, border 0.2s;
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border: 2px solid #36b3af;
+      box-shadow: 0 0 10px 2px #36b3af33;
+    }
+    button {
+      padding: 12px 22px;
+      background: linear-gradient(90deg, #36b3af 0%, #72c6ef 100%);
+      border: none;
+      border-radius: 12px;
+      color: #fffbe7;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0.5px 3.5px 0 rgba(44,62,80,0.07);
+      transition: background 0.18s, transform 0.1s;
+      outline: none;
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #04c3b7 0%, #36b3af 100%);
+      transform: scale(1.04);
+    }
+
+    #output {
+      margin-top: 14px;
+      min-height: 42px;
+      letter-spacing: 0.25px;
+      animation: fadeIn 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    #output h2 {
+      margin: 10px 0 6px 0;
+      color: #07818d;
+      font-size: 23px;
+      font-weight: 600;
+    }
+    #output p {
+      color: #273c75;
+      font-size: 17px;
+      margin: 0;
+      letter-spacing: 0.1px;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Population App</h1>
-        <div class="inner">
-            <input type="text" name="" placeholder="Check Population City" id="city">
-            <button onclick="getWeather()">Search</button>
-        </div>
-        <div id="output"></div>
+  <div class="container">
+    <h1>
+      <span class="icon">🌎</span>
+      Population App
+    </h1>
+    <div class="inner">
+      <input type="text" placeholder="Check Population City" id="city">
+      <button onclick="getWeather()">Search</button>
     </div>
-    <script src="Population_API.js"></script>
-</body>
+    <div id="output"></div>
+  </div>
+  <script>
+    function getWeather() {
+      const city = document.getElementById('city').value.trim();
+      const WeatherDeatils = document.getElementById('output');
 
+      if (city === '') {
+        WeatherDeatils.innerHTML = '<p>Please enter a city name.</p>';
+        return;
+      }
+
+      WeatherDeatils.innerHTML = '<p style="color:#666;font-style:italic;">Loading...</p>';
+
+      const populationUrl = 'https://countriesnow.space/api/v0.1/countries/population/cities';
+      fetch(populationUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  city: city
+              })
+          })
+          .then(response => response.json())
+          .then(populationData => {
+              if (populationData.data && populationData.data.populationCounts && populationData.data.populationCounts.length > 0) {
+                  const populationDetails = `
+            <h2>${city.charAt(0).toUpperCase() + city.slice(1)}</h2>
+            <p>Population: <strong>${populationData.data.populationCounts[0].value}</strong></p>
+          `;
+                  WeatherDeatils.innerHTML = populationDetails;
+              } else {
+                  WeatherDeatils.innerHTML = '<p>No population data available for this city.</p>';
+              }
+          })
+          .catch(error => {
+              WeatherDeatils.innerHTML = '<p>Error fetching population data. Please try again.</p>';
+          });
+    }
+  </script>
+</body>
 </html>
